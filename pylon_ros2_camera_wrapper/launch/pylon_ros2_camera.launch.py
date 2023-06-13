@@ -16,26 +16,12 @@ def generate_launch_description():
     debug = False
     respawn = False
 
-
-
-
-
     default_config_file = os.path.join(
         get_package_share_directory('pylon_ros2_camera_wrapper'),
         'config',
         'default.yaml'
     )
 
-    # launch configuration variables
-    node_name = LaunchConfiguration('node_name')
-    camera_id = LaunchConfiguration('camera_id')
-
-    config_file = LaunchConfiguration('config_file')
-
-    mtu_size = LaunchConfiguration('mtu_size')
-    startup_user_set = LaunchConfiguration('startup_user_set')
-    enable_status_publisher = LaunchConfiguration('enable_status_publisher')
-    enable_current_params_publisher = LaunchConfiguration('enable_current_params_publisher')
 
     # launch arguments
     declare_node_name_cmd = DeclareLaunchArgument(
@@ -80,6 +66,22 @@ def generate_launch_description():
         default_value='true',
         description='Enable/Disable the current parameter publishing.'
     )
+
+
+    # launch configuration variables
+    node_name = LaunchConfiguration('node_name')
+    camera_id = LaunchConfiguration('camera_id')
+
+    config_file = LaunchConfiguration('config_file')
+
+    mtu_size = LaunchConfiguration('mtu_size')
+    startup_user_set = LaunchConfiguration('startup_user_set')
+    enable_status_publisher = LaunchConfiguration('enable_status_publisher')
+    enable_current_params_publisher = LaunchConfiguration('enable_current_params_publisher')
+
+
+
+
 
     # log format
     os.environ['RCUTILS_CONSOLE_OUTPUT_FORMAT'] = '{time} [{name}] [{severity}] {message}'
