@@ -19,9 +19,11 @@ def generate_launch_description():
     default_config_file = os.path.join(
         get_package_share_directory('pylon_ros2_camera_wrapper'),
         'config',
-        '.yaml'
+        'usb_camera.yaml'
     )
 
+   # launch configuration variables
+    node_name = LaunchConfiguration('node_name')
 
     # launch arguments
     declare_node_name_cmd = DeclareLaunchArgument(
@@ -32,7 +34,7 @@ def generate_launch_description():
 
     declare_camera_id_cmd = DeclareLaunchArgument(
         'camera_id',
-        default_value='my_camera',
+        default_value='USB_camera222',
         description='Id of the camera. Used as node namespace.'
     )
 
@@ -118,8 +120,8 @@ def generate_launch_description():
 
     ld.add_action(declare_node_name_cmd)
     ld.add_action(declare_camera_id_cmd)
-
     ld.add_action(declare_config_file_cmd)
+    
     ld.add_action(declare_mtu_size_cmd)
     ld.add_action(declare_startup_user_set_cmd)
     ld.add_action(declare_enable_status_publisher_cmd)
